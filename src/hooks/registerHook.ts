@@ -35,7 +35,9 @@ function registerHook(
             );
         });
     } else {
-        return options ? coreApi.registerHook(hookName, callback, options) : coreApi.registerHook(hookName, callback);
+        return hookName === 'log' && options
+            ? coreApi.registerHook(hookName, callback, options)
+            : coreApi.registerHook(hookName, callback);
     }
 }
 
